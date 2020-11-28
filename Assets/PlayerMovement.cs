@@ -27,11 +27,13 @@ public class PlayerMovement : MonoBehaviour
         if(MoveRight)
         {
             Vector3 movement = new Vector3(1f, 0f, 0f);
+            transform.eulerAngles = new Vector3(0, 0 ,0);
             transform.position += movement * Time.deltaTime * Speed;
         }
         else
         {
             Vector3 movement = new Vector3(-1f, 0f, 0f);
+            transform.eulerAngles = new Vector3(0, 180 ,0);
             transform.position += movement * Time.deltaTime * Speed;
         }
     }
