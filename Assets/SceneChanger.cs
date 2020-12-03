@@ -14,6 +14,6 @@ public class SceneChanger : MonoBehaviour
     }
     public void ToInv()
     {
-        SceneManager.LoadScene("InventoryScene");
+        SceneManager.LoadScene("InventoryScene", LoadSceneMode.Additive);
     }
 }
