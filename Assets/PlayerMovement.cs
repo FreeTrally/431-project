@@ -21,9 +21,7 @@ public class PlayerMovement : MonoBehaviour
         {
             MoveRight = !MoveRight;
         }
-
         
-
         if(MoveRight)
         {
             Vector3 movement = new Vector3(1f, 0f, 0f);
