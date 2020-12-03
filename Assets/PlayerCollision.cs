@@ -20,5 +20,9 @@ public class PlayerCollision : MonoBehaviour
                 {
                     Destroy(other.gameObject);
                 }
+        else if (other.gameObject.CompareTag("Spikes"))
+            {
+                Destroy(gameObject);
+            }
     }
 }
