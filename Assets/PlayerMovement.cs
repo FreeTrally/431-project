@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     public float Speed = 5f;
     public bool MoveRight;
 
@@ -17,21 +16,21 @@ public class PlayerMovement : MonoBehaviour
     {
         hittingWall = Physics2D.OverlapCircle(WallCheck.position, WallCheckRadius, WhatIsWhall);
 
-        if(hittingWall)
+        if (hittingWall)
         {
             MoveRight = !MoveRight;
         }
-        
-        if(MoveRight)
+
+        if (MoveRight)
         {
             Vector3 movement = new Vector3(1f, 0f, 0f);
-            transform.eulerAngles = new Vector3(0, 0 ,0);
+            transform.eulerAngles = new Vector3(0, 0, 0);
             transform.position += movement * Time.deltaTime * Speed;
         }
         else
         {
             Vector3 movement = new Vector3(-1f, 0f, 0f);
-            transform.eulerAngles = new Vector3(0, 180 ,0);
+            transform.eulerAngles = new Vector3(0, 180, 0);
             transform.position += movement * Time.deltaTime * Speed;
         }
     }
