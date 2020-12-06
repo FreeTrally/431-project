@@ -10,8 +10,8 @@ public class MenuControl : MonoBehaviour
 
     public void EducationMaterialsPressed()
     {
-        SceneManager.LoadScene("EducationMaterials");
-        //Открытие ссылки ?
+        //SceneManager.LoadScene("EducationMaterials");
+        Application.OpenURL("http://www.mathprofi.ru/sluchainaya_velichina.html");
     }
 
     public void RecordsPressed()
