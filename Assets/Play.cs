@@ -7,10 +7,8 @@ public class Play : MonoBehaviour
 {
     public GameObject Player;
 
-    void TaskOnClick()
+    public void StartPlayer()
     {
         Player.GetComponent<PlayerMovement>().enabled = true;
     }
-
-
 }
