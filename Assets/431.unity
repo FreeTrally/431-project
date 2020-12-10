@@ -796,6 +796,7 @@ PrefabInstance:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9b8a15b43ce94040967eda342e32922, type: 3}
 --- !u!1 &869272613
+
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
