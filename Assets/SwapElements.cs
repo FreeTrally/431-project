@@ -4,31 +4,37 @@ using UnityEngine;
 
 public class SwapElements : MonoBehaviour
 {
-    RaycastHit2D hit;
+    RaycastHit2D selectHit;
 
+    public GameObject PlayButton;   //костыль чтобы не кликались элементы до нажатия кнопки
     public Transform firstElement = null;
     public Transform secondElement = null;
-    public Transform tempElement;
-    
+    Vector3 tempPosition;
+
     void Update()
     {
-        hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        if (Input.GetMouseButtonDown(0) && hit)
-        {
-            if(!firstElement)  
+        if (!PlayButton.activeInHierarchy)
             {
-                firstElement = hit.transform;  
-                tempElement = firstElement;
+            if (Input.GetMouseButtonDown(0))    
+            {
+                RaycastHit2D selectHit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                if (selectHit)
+                {
+                    if (firstElement == null)
+                    {
+                        firstElement = selectHit.transform;
 
-                Transform sky = firstElement.Find("Sky");
-                sky.gameObject.SetActive(false);
-                Transform skyHighlighted = firstElement.Find("SkyHighlighted");
-                skyHighlighted.gameObject.SetActive(true);
-            }
-            else if(firstElement != null)  
-            {
-                secondElement = hit.transform;
-                Swap();
+                        Transform sky = firstElement.Find("Sky");
+                        sky.gameObject.SetActive(false);
+                        Transform skyHighlighted = firstElement.Find("SkyHighlighted");
+                        skyHighlighted.gameObject.SetActive(true);
+                    }
+                    else if (firstElement != null)
+                    {
+                        secondElement = selectHit.transform;
+                        Swap();
+                    }
+                }
             }
         }
     }
@@ -39,11 +45,13 @@ public class SwapElements : MonoBehaviour
         sky.gameObject.SetActive(true);
         Transform skyHighlighted = firstElement.Find("SkyHighlighted");
         skyHighlighted.gameObject.SetActive(false);
-        
+
+        tempPosition = firstElement.transform.position;
         firstElement.transform.position = secondElement.transform.position;
-        secondElement.transform.position = tempElement.transform.position;
-        
+        secondElement.transform.position = tempPosition;
+
         firstElement = null;
-        secondElement = null;
+        //secondElement = null;
+        //tempPosition = new Vector3();
     }
 }
