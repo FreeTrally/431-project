@@ -5,7 +5,7 @@ public class MenuControl : MonoBehaviour
 {
     public void ChooseLevelPressed()
     {
-        SceneManager.LoadScene("ChooseLevel");
+        SceneManager.LoadScene("4311");
     }
 
     public void EducationMaterialsPressed()
