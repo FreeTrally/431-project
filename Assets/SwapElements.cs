@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SwapElements : MonoBehaviour
 {
-    RaycastHit2D selectHit;
+    public GameObject player;
 
     public GameObject PlayButton;   //костыль чтобы не кликались элементы до нажатия кнопки
     public Transform firstElement = null;
@@ -13,27 +13,33 @@ public class SwapElements : MonoBehaviour
 
     void Update()
     {
+        player = GameObject.Find("Player");
         if (!PlayButton.activeInHierarchy)
             {
-            if (Input.GetMouseButtonDown(0))    
-            {
-                RaycastHit2D selectHit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-                if (selectHit)
-                {
-                    if (firstElement == null)
-                    {
-                        firstElement = selectHit.transform;
+            LayerMask element = LayerMask.GetMask("Element");
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);                
+            RaycastHit2D selectHit = Physics2D.Raycast(new Vector2(worldPosition.x, worldPosition.y), Vector2.zero, element);
 
-                        Transform sky = firstElement.Find("Sky");
-                        sky.gameObject.SetActive(false);
-                        Transform skyHighlighted = firstElement.Find("SkyHighlighted");
-                        skyHighlighted.gameObject.SetActive(true);
-                    }
-                    else if (firstElement != null)
-                    {
-                        secondElement = selectHit.transform;
-                        Swap();
-                    }
+            if (selectHit && Input.GetMouseButtonDown(0))
+            {
+                
+                if (firstElement == null && 
+                    selectHit.transform.name != "Ground" && 
+                    !Physics2D.IsTouching(selectHit.collider, player.GetComponent<Collider2D>()))
+                {
+                    firstElement = selectHit.transform;
+
+                    Transform sky = firstElement.Find("Sky");
+                    sky.gameObject.SetActive(false);
+                    Transform skyHighlighted = firstElement.Find("SkyHighlighted");
+                    skyHighlighted.gameObject.SetActive(true);
+                }
+                else if (firstElement != null && 
+                    selectHit.transform.name != "Ground" &&
+                    !Physics2D.IsTouching(selectHit.collider, player.GetComponent<Collider2D>()))
+                {
+                    secondElement = selectHit.transform;
+                    Swap();
                 }
             }
         }
@@ -51,7 +57,5 @@ public class SwapElements : MonoBehaviour
         secondElement.transform.position = tempPosition;
 
         firstElement = null;
-        //secondElement = null;
-        //tempPosition = new Vector3();
     }
 }
