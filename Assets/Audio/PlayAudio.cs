@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class PlayAudio : MonoBehaviour
 {
     public AudioSource audioSource;
+    public Slider volumeSlider;
 
     void Start()
     {
+        volumeSlider.onValueChanged.AddListener(changeVolume);
         audioSource.Play();
     }
 
