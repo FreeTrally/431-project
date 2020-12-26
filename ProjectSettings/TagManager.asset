@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Target
   - Spikes
+  - Element
+  - Sky
   layers:
   - Default
   - TransparentFX
