@@ -186,6 +186,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd66c785edf44349ac6a5ba74576a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TargetOne: {fileID: 0}
+  TargetTwo: {fileID: 0}
+  TargetThree: {fileID: 0}
+  TargetFour: {fileID: 0}
+  TargetFive: {fileID: 0}
+  Inventory: {fileID: 0}
 --- !u!114 &2534776721448008489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 5
   MoveRight: 1
+  Jumping: 0
   WallCheck: {fileID: 2534776721351062533}
   WallCheckRadius: 0.3
   WhatIsWhall:

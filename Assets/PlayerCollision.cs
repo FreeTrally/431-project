@@ -31,5 +31,11 @@ public class PlayerCollision : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        else if (other.gameObject.CompareTag("Jump"))
+        {
+            //other.gameObject.SetActive(false);
+            var movement = this.GetComponent<PlayerMovement>();
+            movement.Jumping = true;
+        }
     }
 }
