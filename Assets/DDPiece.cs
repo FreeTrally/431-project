@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class DDPiece : MonoBehaviour
 {
-    public GameObject correctPlace;
+    public Slot[] slots;
     private bool moving;
-
     private float startPosX;
     private float startPosY;
-    private float xLowerBorder = 0.923f;
-    private float yLowerBorder = 0.742f;
-    private float xUpperBorder = 5.479f;
-    private float yUpperBorder = 4.777f;
-    private float xPiecePos = 2.917f;
-    private float yPiecePos = 2.496f;
+    
 
-    private void Start()
+    public class Slot
     {
-
+        public float xLowerBorder;
+        public float yLowerBorder;
+        public float xUpperBorder;
+        public float yUpperBorder;
+        public float xPiecePos;
+        public float yPiecePos;
     }
 
     private void Update()
@@ -54,11 +53,20 @@ public class DDPiece : MonoBehaviour
         Vector3 objPos;
         objPos = this.gameObject.transform.position;
         moving = false;
-        if (objPos.x >= xLowerBorder && objPos.x <= xUpperBorder
-            && objPos.y >= yLowerBorder && objPos.y <= yUpperBorder)
+        foreach (var e in slots)
         {
-            this.gameObject.transform.position = new Vector3(xPiecePos, yPiecePos,
-                this.gameObject.transform.localPosition.z);
-        }
+            if (objPos.x >= e.xLowerBorder && objPos.x <= e.xUpperBorder
+            && objPos.y >= e.yLowerBorder && objPos.y <= e.yUpperBorder)
+            {
+                this.gameObject.transform.position = new Vector3(e.xPiecePos, e.yPiecePos,
+                    this.gameObject.transform.localPosition.z);
+                break;
+            }
+            else
+            {
+                this.gameObject.transform.position = new Vector3(objPos.x, objPos.y,
+                    this.gameObject.transform.localPosition.z);
+            }
+        }      
     }
 }

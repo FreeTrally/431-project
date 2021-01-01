@@ -810,7 +810,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &708912259
 Transform:
   m_ObjectHideFlags: 0
@@ -1795,9 +1795,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1767221294}
-  - component: {fileID: 1767221298}
   - component: {fileID: 1767221297}
   - component: {fileID: 1767221296}
+  - component: {fileID: 1767221298}
   - component: {fileID: 1767221295}
   - component: {fileID: 1767221299}
   m_Layer: 0

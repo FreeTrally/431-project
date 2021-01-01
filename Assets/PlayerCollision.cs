@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+    public GameObject table;
+    public Target currentLvl;
+
     void OnCollisionEnter2D(Collision2D collisionInfo) {
         
         if (collisionInfo.collider.name == "Ground")
@@ -19,6 +22,10 @@ public class PlayerCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Target"))
                 {
                     Destroy(other.gameObject);
+                    currentLvl.PickTarget();
+                    var movement = this.GetComponent<PlayerMovement>();
+                    movement.enabled = false;
+                    movement.Speed = 0; 
                 }
         else if (other.gameObject.CompareTag("Spikes"))
             {

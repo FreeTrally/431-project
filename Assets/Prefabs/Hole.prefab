@@ -70,12 +70,17 @@ PrefabInstance:
     - target: {fileID: 2126972784386045899, guid: d9b8a15b43ce94040967eda342e32922,
         type: 3}
       propertyPath: m_Name
-      value: BlockWithHole
+      value: Hole
       objectReference: {fileID: 0}
     - target: {fileID: 2964599226721545747, guid: d9b8a15b43ce94040967eda342e32922,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113606388986177906, guid: d9b8a15b43ce94040967eda342e32922,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.06
       objectReference: {fileID: 0}
     - target: {fileID: 7115481821186434213, guid: d9b8a15b43ce94040967eda342e32922,
         type: 3}

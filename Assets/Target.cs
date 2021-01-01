@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Target : MonoBehaviour
+public abstract class Target : MonoBehaviour
 {
     public float StoredNumber;
+
+    public abstract void PickTarget();
 }
