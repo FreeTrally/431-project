@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class DnDButton : EventTrigger
 {
+    public Button tablePlace;
+    public Text PieceText;
     private bool startDragging;
     private Vector2 InitialPosition;
 
@@ -36,6 +38,19 @@ public class DnDButton : EventTrigger
     public override void OnPointerUp(PointerEventData eventData)
     {
         startDragging = false;
-        transform.position = InitialPosition;
+        var place = tablePlace.GetComponent<RectTransform>();
+        var crnrs = new Vector3[4];
+        place.GetComponent<RectTransform>().GetWorldCorners(crnrs);
+        var pos = place.position;
+        Vector2 mousePos = Input.mousePosition;
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        if (mousePos.x >= crnrs[0].x && mousePos.x <= crnrs[1].x 
+            && mousePos.y >= crnrs[0].y && mousePos.y <= crnrs[1].y)
+        {
+            transform.position = pos;
+            tablePlace.GetComponent<Text>().text = PieceText.text;
+        }
+        else 
+            transform.position = InitialPosition;
     }
 }

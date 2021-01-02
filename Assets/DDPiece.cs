@@ -1,64 +1,59 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class DDPiece : MonoBehaviour
+public class DDPiece : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public GameObject correctPlace;
-    private bool moving;
+    public Button tablePlace;
+    public Text tablePlaceText;
+    public Text PieceText;
+    private bool startDragging;
+    private Vector2 InitialPosition;
 
-    private float startPosX;
-    private float startPosY;
-    private float xLowerBorder = 0.923f;
-    private float yLowerBorder = 0.742f;
-    private float xUpperBorder = 5.479f;
-    private float yUpperBorder = 4.777f;
-    private float xPiecePos = 2.917f;
-    private float yPiecePos = 2.496f;
-
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-
+        InitialPosition = transform.position;
+        Debug.Log(InitialPosition);
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        if (moving)
+        if (startDragging)
         {
-            Vector3 mousePos;
-            mousePos = Input.mousePosition;
+            Vector2 mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY,
-                this.gameObject.transform.localPosition.z);
+            transform.position = new Vector2(mousePos.x, mousePos.y);
         }
     }
 
-    private void OnMouseDown()
+    public void OnPointerDown(PointerEventData eventData)
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 mousePos;
-            mousePos = Input.mousePosition;
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-
-            startPosX = mousePos.x - this.transform.position.x;
-            startPosY = mousePos.y - this.transform.position.y;
-
-            moving = true;
-        }
+        startDragging = true;
     }
 
-    private void OnMouseUp()
+    public void OnPointerUp(PointerEventData eventData)
     {
-        Vector3 objPos;
-        objPos = this.gameObject.transform.position;
-        moving = false;
-        if (objPos.x >= xLowerBorder && objPos.x <= xUpperBorder
-            && objPos.y >= yLowerBorder && objPos.y <= yUpperBorder)
+        startDragging = false;
+        var place = tablePlace.GetComponent<RectTransform>();
+        var crnrs = new Vector3[4];
+        place.GetComponent<RectTransform>().GetWorldCorners(crnrs);
+        var pos = place.position;
+        Debug.Log(pos);
+        Vector2 mousePos = Input.mousePosition;
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        Debug.Log(mousePos);
+        if (mousePos.x >= crnrs[0].x && mousePos.x <= crnrs[2].x
+            && mousePos.y >= crnrs[0].y && mousePos.y <= crnrs[2].y)
         {
-            this.gameObject.transform.position = new Vector3(xPiecePos, yPiecePos,
-                this.gameObject.transform.localPosition.z);
+            tablePlaceText.text = PieceText.text;
+            transform.position = InitialPosition;
         }
+        else
+            transform.position = InitialPosition;
     }
 }

@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class TargetScript : MonoBehaviour, IPointerDownHandler
 {
     public double[] targetVs;
-    public Text text;
+    public Text PieceText;
 
     float clicked = 0;
     float clicktime = 0;
@@ -17,7 +17,7 @@ public class TargetScript : MonoBehaviour, IPointerDownHandler
 
     private void Start()
     {
-        text.text = targetVs[current].ToString();
+        PieceText.text = targetVs[current].ToString();
     }
 
     public void OnPointerDown(PointerEventData data)
@@ -30,9 +30,9 @@ public class TargetScript : MonoBehaviour, IPointerDownHandler
             clicked = 0;
             clicktime = 0;
             this.transform.Rotate(Vector3.forward * -90);
-            text.transform.Rotate(Vector3.forward * 90);
+            PieceText.transform.Rotate(Vector3.forward * 90);
             current = (current + 1) % targetVs.Length;
-            text.text = targetVs[current].ToString();
+            PieceText.text = targetVs[current].ToString();
         }
         else if (clicked > 2 || Time.time - clicktime > 1) clicked = 0;
     }
