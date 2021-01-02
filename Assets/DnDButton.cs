@@ -7,13 +7,13 @@ using UnityEngine.UI;
 public class DnDButton : EventTrigger
 {
     private bool startDragging;
+    private Vector2 InitialPosition;
 
-    private float startPosX;
-    private float startPosY;
     // Start is called before the first frame update
     void Start()
     {
-        
+        InitialPosition = transform.position;
+        Debug.Log(InitialPosition);
     }
 
     // Update is called once per frame
@@ -22,9 +22,9 @@ public class DnDButton : EventTrigger
         if (startDragging)
         {
             Vector2 mousePos = Input.mousePosition;
-            //mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-            transform.localPosition = new Vector2(mousePos.x, mousePos.y);
+            transform.position = new Vector2(mousePos.x , mousePos.y);
         }
     }
 
@@ -36,5 +36,6 @@ public class DnDButton : EventTrigger
     public override void OnPointerUp(PointerEventData eventData)
     {
         startDragging = false;
+        transform.position = InitialPosition;
     }
 }
