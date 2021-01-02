@@ -10,6 +10,7 @@ TagManager:
   - Element
   - Sky
   - TableCells
+  - Jump
   layers:
   - Default
   - TransparentFX
