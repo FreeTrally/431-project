@@ -16,7 +16,6 @@ public class DDPiece : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     void Start()
     {
         InitialPosition = transform.position;
-        Debug.Log(InitialPosition);
     }
 
     // Update is called once per frame
@@ -51,7 +50,9 @@ public class DDPiece : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             && mousePos.y >= crnrs[0].y && mousePos.y <= crnrs[2].y)
         {
             tablePlaceText.text = PieceText.text;
+            //transform.position = tablePlace.transform.position; тогда пазл остаётся в ячейке таблицы, но надо убрать текст в ячейке
             transform.position = InitialPosition;
+
         }
         else
             transform.position = InitialPosition;

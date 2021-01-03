@@ -5,17 +5,21 @@ using UnityEngine.UI;
 
 public class Target : MonoBehaviour
 {
-    public float StoredNumber;  //число относящееся к этой цели
-    public Text SlotText;       //текст в слоте инвентаря
-    
+    //четыре значения хранящиеся в цели и ГО для кусочка пазла
+    public double NumberOne;  
+    public double NumberTwo;
+    public double NumberThree;
+    public double NumberFour;
+    public GameObject PuzzlePiece;
 
-    //записываем текст в слот инвентаря и скрываем его со сцены
+    private double[] PuzzleArray;
+
+    //копируем значения цели в кусочек пазла
     void Start()
     {
-        SlotText.text = StoredNumber.ToString();
-        SlotText.gameObject.SetActive(false);
+        PuzzleArray = new double[] { NumberOne, NumberTwo, NumberThree, NumberFour};
+        System.Array.Copy(PuzzleArray, PuzzlePiece.GetComponent<TargetScript>().targetVs, PuzzleArray.Length);
     }
-    //если цель отсутствует на сцене (собрана) то включаем отображение текста
     private void Update()
     {
         if(gameObject.activeSelf)
@@ -24,7 +28,7 @@ public class Target : MonoBehaviour
         }
         else if (!gameObject.activeSelf)
         {
-            SlotText.gameObject.SetActive(true);
+            PuzzlePiece.SetActive(true);
             Debug.Log("Target Destroyed");
         }
     }

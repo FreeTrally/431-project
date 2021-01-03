@@ -11,6 +11,8 @@ TagManager:
   - Sky
   - TableCells
   - Jump
+  - Tables
+  - Controller
   layers:
   - Default
   - TransparentFX

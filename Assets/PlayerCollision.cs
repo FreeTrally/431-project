@@ -10,7 +10,6 @@ public class PlayerCollision : MonoBehaviour
     public GameObject TargetFour;
     public GameObject TargetFive;
     public GameObject Inventory;
-    int TargetCollectedCounter;
     void OnCollisionEnter2D(Collision2D collisionInfo) {
         
         if (collisionInfo.collider.name == "Ground")
@@ -26,6 +25,7 @@ public class PlayerCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Target"))
         {
             other.gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("Controller").GetComponent<EndGame>().TargetCounter++;
         }
         else if (other.gameObject.CompareTag("Spikes"))
         {
