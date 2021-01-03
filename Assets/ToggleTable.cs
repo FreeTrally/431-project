@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class ToggleTable : MonoBehaviour
 {
-    public GameObject table;
+    public GameObject Table;
    public void ShowHideTable()
     {
-        if (table.gameObject.activeSelf)
+        if (Table.gameObject.activeSelf)
         {
-            table.SetActive(false);
+            Table.SetActive(false);
         }
-        else if (!table.gameObject.activeSelf)
+        else if (!Table.gameObject.activeSelf)
         {
-            table.SetActive(true);
+            Table.SetActive(true);
         }
     }
 }

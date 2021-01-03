@@ -10,6 +10,8 @@ public class PlayerCollision : MonoBehaviour
     public GameObject TargetFour;
     public GameObject TargetFive;
     public GameObject Inventory;
+    public GameObject RestartButton;
+    public GameObject Table;
     void OnCollisionEnter2D(Collision2D collisionInfo) {
         
         if (collisionInfo.collider.name == "Ground")
@@ -29,7 +31,10 @@ public class PlayerCollision : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Spikes"))
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            Table.SetActive(true);
+            //Inventory.SetActive(true);
+            RestartButton.SetActive(true);
         }
         else if (other.gameObject.CompareTag("Jump"))
         {

@@ -6,6 +6,8 @@ public class EndGame : MonoBehaviour
 {
     public int TargetCounter;
     public int Targets;
+    public GameObject Table;
+    public GameObject Inventory;
     void Start()
     {
         Targets = GameObject.FindGameObjectsWithTag("Target").Length;
@@ -17,6 +19,8 @@ public class EndGame : MonoBehaviour
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             player.SetActive(false);
+            Table.SetActive(true);
+            Inventory.SetActive(true);
         }
     }
 }

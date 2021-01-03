@@ -14,7 +14,7 @@ public class SwapElements : MonoBehaviour
     void Update()
     {
         player = GameObject.Find("Player");
-        if (!PlayButton.activeInHierarchy)
+        if (PlayButton.activeInHierarchy)
             {
             LayerMask element = LayerMask.GetMask("Element");
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);                
