@@ -11,12 +11,62 @@ public class MenuControl : MonoBehaviour
     public void EducationMaterialsPressed()
     {
         //SceneManager.LoadScene("EducationMaterials");
-        Application.OpenURL("http://www.mathprofi.ru/sluchainaya_velichina.html");
+        //Application.OpenURL("http://www.mathprofi.ru/sluchainaya_velichina.html");
     }
 
     public void RecordsPressed()
     {
-        SceneManager.LoadScene("Records");
+        //SceneManager.LoadScene("Records");
+    }
+
+    public void Level1Pressed()
+    {
+        //SceneManager.LoadScene("Records");
+    }
+
+    public void Level2Pressed()
+    {
+        //SceneManager.LoadScene("Records");
+    }
+
+    public void Level3Pressed()
+    {
+        //SceneManager.LoadScene("Records");
+    }
+
+    public void Level4Pressed()
+    {
+        //SceneManager.LoadScene("Records");
+    }
+
+    public void Level5Pressed()
+    {
+        //SceneManager.LoadScene("Records");
+    }
+
+    public void Level6Pressed()
+    {
+        //SceneManager.LoadScene("Records");
+    }
+
+    public void Level7Pressed()
+    {
+        //SceneManager.LoadScene("Records");
+    }
+
+    public void Level8Pressed()
+    {
+        //SceneManager.LoadScene("Records");
+    }
+
+    public void Level9Pressed()
+    {
+        //SceneManager.LoadScene("Records");
+    }
+
+    public void Level10Pressed()
+    {
+        //SceneManager.LoadScene("Records");
     }
 
     public void ExitToMenu()
