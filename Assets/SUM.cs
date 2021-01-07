@@ -7,40 +7,24 @@ using UnityEngine.UI;
 public class SUM : MonoBehaviour
 {
     public Text SumText;
-    public Text CellOne;
-    public Text CellTwo;
-    public Text CellThree;
+    public Text[] Cells;
     
     // Update is called once per frame
     void Update()
     {
-        if (CellOne.text == "")
+        double sum = 0;
+        foreach (var e in Cells)
         {
-            CellOne.text = "0";
-            CellOne.enabled = false;
+            if (e.text == "")
+            {
+                e.text = "0";
+                e.enabled = false;
+            }
+            else if (e.text != "" && e.text != "0")
+                e.enabled = true;
+            sum += double.Parse(e.text);
         }
-        else if (CellOne.text != "" && CellOne.text != "0")
-            CellOne.enabled = true;
 
-        if (CellTwo.text == "")
-        {
-            CellTwo.text = "0";
-            CellTwo.enabled = false;
-        }
-        else if (CellTwo.text != "" && CellTwo.text != "0")
-            CellTwo.enabled = true;
-
-        if (CellThree.text == "")
-        {
-            CellThree.text = "0";
-            CellThree.enabled = false;
-        }
-        else if (CellThree.text != "" && CellThree.text != "0")
-            CellThree.enabled = true;
-
-        var sum = double.Parse(CellOne.text) +
-            double.Parse(CellTwo.text) +
-            double.Parse(CellThree.text);
         SumText.text = (sum).ToString();
       
         if (SumText.text.Equals("1"))
