@@ -5,17 +5,17 @@ using UnityEngine;
 public class EndGame : MonoBehaviour
 {
     public int TargetCounter;
-    public int Targets;
+    private int targets;
     public GameObject Table;
     public GameObject Inventory;
     void Start()
     {
-        Targets = GameObject.FindGameObjectsWithTag("Target").Length;
+        targets = GameObject.FindGameObjectsWithTag("Target").Length;
     }
 
     private void Update()
     {
-        if (TargetCounter == Targets)
+        if (TargetCounter == targets)
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             TargetCounter = -1;
