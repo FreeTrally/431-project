@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEngine.EventSystems;
+using System.Globalization;
 
 public class TargetScript : MonoBehaviour, IPointerDownHandler
 {
-    public double[] targetVs;
+    public string[] targetVs;
     public Text PieceText;
 
     float clicked = 0;
@@ -17,7 +18,7 @@ public class TargetScript : MonoBehaviour, IPointerDownHandler
 
     private void Start()
     {
-        PieceText.text = targetVs[current].ToString();
+        PieceText.text = targetVs[current];
     }
 
     public void OnPointerDown(PointerEventData data)
@@ -32,7 +33,7 @@ public class TargetScript : MonoBehaviour, IPointerDownHandler
             this.transform.Rotate(Vector3.forward * -90);
             PieceText.transform.Rotate(Vector3.forward * 90);
             current = (current + 1) % targetVs.Length;
-            PieceText.text = targetVs[current].ToString();
+            PieceText.text = targetVs[current];
         }
         else if (clicked > 2 || Time.time - clicktime > 1) clicked = 0;
     }

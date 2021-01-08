@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class DDPiece : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public Button tablePlace;
-    public Text tablePlaceText;
+    public Button[] tablePlaces;
+    public Text[] tablePlacesTexts;
     public Text PieceText;
     private bool startDragging;
     private Vector2 InitialPosition;
@@ -38,23 +38,37 @@ public class DDPiece : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         startDragging = false;
-        var place = tablePlace.GetComponent<RectTransform>();
-        var crnrs = new Vector3[4];
-        place.GetComponent<RectTransform>().GetWorldCorners(crnrs);
-        var pos = place.position;
-        Debug.Log(pos);
         Vector2 mousePos = Input.mousePosition;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        Debug.Log(mousePos);
-        if (mousePos.x >= crnrs[0].x && mousePos.x <= crnrs[2].x
-            && mousePos.y >= crnrs[0].y && mousePos.y <= crnrs[2].y)
-        {
-            tablePlaceText.text = PieceText.text;
-            //transform.position = tablePlace.transform.position; тогда пазл остаётся в ячейке таблицы, но надо убрать текст в ячейке
-            transform.position = InitialPosition;
 
+        for (var i = 0; i < tablePlaces.Length; i++)
+        {
+            var place = tablePlaces[i].GetComponent<RectTransform>();
+            var crnrs = new Vector3[4];
+            place.GetComponent<RectTransform>().GetWorldCorners(crnrs);
+            var pos = place.position;
+
+            if (mousePos.x >= crnrs[0].x && mousePos.x <= crnrs[2].x
+                && mousePos.y >= crnrs[0].y && mousePos.y <= crnrs[2].y)
+            {
+                tablePlacesTexts[i].text = PieceText.text;
+                transform.position = tablePlaces[i].transform.position;
+                //transform.position = InitialPosition;
+            }
         }
-        else
-            transform.position = InitialPosition;
+        //var place = tablePlace.GetComponent<RectTransform>();
+        //var crnrs = new Vector3[4];
+        //place.GetComponent<RectTransform>().GetWorldCorners(crnrs);
+        //var pos = place.position;
+        
+        //if (mousePos.x >= crnrs[0].x && mousePos.x <= crnrs[2].x
+        //    && mousePos.y >= crnrs[0].y && mousePos.y <= crnrs[2].y)
+        //{
+        //    tablePlaceText.text = PieceText.text;          
+        //    transform.position = tablePlace.transform.position;
+        //    //transform.position = InitialPosition;
+        //}
+        //else
+        //    transform.position = InitialPosition;
     }
 }

@@ -5,7 +5,9 @@ using UnityEngine;
 public class ToggleTable : MonoBehaviour
 {
     public GameObject Table;
-   public void ShowHideTable()
+    public GameObject Inv;
+
+    public void ShowHideTable()
     {
         if (Table.gameObject.activeSelf)
         {
@@ -14,6 +16,15 @@ public class ToggleTable : MonoBehaviour
         else if (!Table.gameObject.activeSelf)
         {
             Table.SetActive(true);
+        }
+
+        if (Inv.gameObject.activeSelf)
+        {
+            Inv.SetActive(false);
+        }
+        else if (!Inv.gameObject.activeSelf)
+        {
+            Inv.SetActive(true);
         }
     }
 }

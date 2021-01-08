@@ -46,4 +46,9 @@ public class PlayerMovement : MonoBehaviour
             transform.position += movement * Time.deltaTime * Speed;
         }
     }
+
+    public void SetSpeed()
+    {
+        Speed = 5f;
+    }
 }
