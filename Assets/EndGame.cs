@@ -30,10 +30,7 @@ public class EndGame : MonoBehaviour
         if (TargetCounter == targetsCount)
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
-            TargetCounter = -1;
-            //player.SetActive(false);
-            //Table.SetActive(true);
-            //Inventory.SetActive(true);
+            TargetCounter = -1;         
         }
     }
 }

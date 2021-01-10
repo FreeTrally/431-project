@@ -71,6 +71,6 @@ public class MenuControl : MonoBehaviour
 
     public void ExitToMenu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("(CR)Menu");
     }
 }

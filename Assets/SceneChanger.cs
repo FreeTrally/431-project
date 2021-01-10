@@ -4,16 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
-    public void ToGame()
+    public void ExitToMenu()
     {
-        SceneManager.LoadScene("GameScene");
-    }
-    public void ToTask()
-    {
-        SceneManager.LoadScene("TaskScene");
-    }
-    public void ToInv()
-    {
-        SceneManager.LoadScene("InventoryScene", LoadSceneMode.Additive);
+        SceneManager.LoadScene("(CR)Menu");
     }
 }
