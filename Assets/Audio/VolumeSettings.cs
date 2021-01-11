@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class VolumeSettings : MonoBehaviour
 {
-    private float masterVolume = 1f;
-    private float audioVolume = 1f;
-    private float musicVolume = 1f;
+    private float masterVolume = 0.5f;
+    private float audioVolume = 0.5f;
+    private float musicVolume = 0.5f;
 
     void Start()
     {
@@ -18,27 +18,25 @@ public class VolumeSettings : MonoBehaviour
 
     public void SetAudioVolume(float v)
     {
-        audioVolume = v * masterVolume;
+        audioVolume = v;
         SetVolume();
     }
     public void SetMusicVolume(float v)
     {
-        musicVolume = v * masterVolume;
+        musicVolume = v;
         SetVolume();
     }
 
     public void SetMasterVolume(float v)
     {
         masterVolume = v;
-        audioVolume *= masterVolume;
-        musicVolume *= masterVolume;
         SetVolume();
     }
 
     private void SetVolume()
     {
-        PlayerPrefs.SetFloat("audioVolume", audioVolume);
-        PlayerPrefs.SetFloat("musicVolume", musicVolume);
+        PlayerPrefs.SetFloat("audioVolume", audioVolume * masterVolume);
+        PlayerPrefs.SetFloat("musicVolume", musicVolume * masterVolume);
         PlayerPrefs.Save();
     }
 }
