@@ -19,24 +19,21 @@ public class SwapElements : MonoBehaviour
             LayerMask element = LayerMask.GetMask("Element");
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);                
             RaycastHit2D selectHit = Physics2D.Raycast(new Vector2(worldPosition.x, worldPosition.y), Vector2.zero, element);
+            var name = selectHit.transform.name.Substring(0, 5);
 
-            if (selectHit && Input.GetMouseButtonDown(0))
+            if (selectHit && Input.GetMouseButtonDown(0) && name == "Block")
             {
-                
-                if (firstElement == null && 
-                    selectHit.transform.name != "Ground" && 
-                    !Physics2D.IsTouching(selectHit.collider, player.GetComponent<Collider2D>()))
+                if (firstElement == null)
                 {
                     firstElement = selectHit.transform;
-
+                    if (firstElement.Find("Blocked") != null)
+                        return;
                     Transform sky = firstElement.Find("Sky");
                     sky.gameObject.SetActive(false);
                     Transform skyHighlighted = firstElement.Find("SkyHighlighted");
                     skyHighlighted.gameObject.SetActive(true);
                 }
-                else if (firstElement != null && 
-                    selectHit.transform.name != "Ground" &&
-                    !Physics2D.IsTouching(selectHit.collider, player.GetComponent<Collider2D>()))
+                else
                 {
                     secondElement = selectHit.transform;
                     Swap();
@@ -52,10 +49,14 @@ public class SwapElements : MonoBehaviour
         Transform skyHighlighted = firstElement.Find("SkyHighlighted");
         skyHighlighted.gameObject.SetActive(false);
 
-        tempPosition = firstElement.transform.position;
-        firstElement.transform.position = secondElement.transform.position;
-        secondElement.transform.position = tempPosition;
+        if (firstElement.Find("Blocked") == null && secondElement.Find("Blocked") == null)
+        {
+            tempPosition = firstElement.transform.position;
+            firstElement.transform.position = secondElement.transform.position;
+            secondElement.transform.position = tempPosition;
+        }
 
         firstElement = null;
+        secondElement = null;
     }
 }
