@@ -19,9 +19,8 @@ public class SwapElements : MonoBehaviour
             LayerMask element = LayerMask.GetMask("Element");
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);                
             RaycastHit2D selectHit = Physics2D.Raycast(new Vector2(worldPosition.x, worldPosition.y), Vector2.zero, element);
-            var name = selectHit.transform.name.Substring(0, 5);
 
-            if (selectHit && Input.GetMouseButtonDown(0) && name == "Block")
+            if (selectHit && Input.GetMouseButtonDown(0) && selectHit.transform.name.Substring(0, 5) == "Block")
             {
                 if (firstElement == null)
                 {
