@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -49,13 +50,29 @@ public class SwapElements : MonoBehaviour
         skyHighlighted.gameObject.SetActive(false);
 
         if (firstElement.Find("Blocked") == null && secondElement.Find("Blocked") == null)
-        {
-            tempPosition = firstElement.transform.position;
-            firstElement.transform.position = secondElement.transform.position;
-            secondElement.transform.position = tempPosition;
+        {           
+            if (firstElement.Find("HorB") != null || secondElement.Find("HorB") != null)
+            {
+                if (Math.Abs(firstElement.transform.position.x - secondElement.transform.position.x) <= 1)
+                    TrueSwap();
+            }
+            else if (firstElement.Find("VerB") != null || secondElement.Find("VerB") != null)
+            {
+                if (Math.Abs(firstElement.transform.position.y - secondElement.transform.position.y) <= 1)
+                    TrueSwap();
+            }
+            else
+                TrueSwap();
         }
 
         firstElement = null;
         secondElement = null;
+    }
+
+    private void TrueSwap()
+    {
+        tempPosition = firstElement.transform.position;
+        firstElement.transform.position = secondElement.transform.position;
+        secondElement.transform.position = tempPosition;
     }
 }
