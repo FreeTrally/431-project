@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Exit : MonoBehaviour
 {
-    public void exitgame()
+    public void ExitGame()
     {
-        Debug.Log("exitgame");
+        Debug.Log("Closed");
         Application.Quit();
     }
 }
