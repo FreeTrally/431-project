@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,28 +16,24 @@ public class SwapElements : MonoBehaviour
     {
         player = GameObject.Find("Player");
         if (PlayButton.activeInHierarchy)
-            {
+        {
             LayerMask element = LayerMask.GetMask("Element");
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);                
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D selectHit = Physics2D.Raycast(new Vector2(worldPosition.x, worldPosition.y), Vector2.zero, element);
 
-            if (selectHit && Input.GetMouseButtonDown(0))
+            if (selectHit && Input.GetMouseButtonDown(0) && selectHit.transform.name.Substring(0, 5) == "Block")
             {
-                
-                if (firstElement == null && 
-                    selectHit.transform.name != "Ground" && 
-                    !Physics2D.IsTouching(selectHit.collider, player.GetComponent<Collider2D>()))
+                if (firstElement == null)
                 {
                     firstElement = selectHit.transform;
-
+                    if (firstElement.Find("Blocked") != null)
+                        return;
                     Transform sky = firstElement.Find("Sky");
                     sky.gameObject.SetActive(false);
                     Transform skyHighlighted = firstElement.Find("SkyHighlighted");
                     skyHighlighted.gameObject.SetActive(true);
                 }
-                else if (firstElement != null && 
-                    selectHit.transform.name != "Ground" &&
-                    !Physics2D.IsTouching(selectHit.collider, player.GetComponent<Collider2D>()))
+                else
                 {
                     secondElement = selectHit.transform;
                     Swap();
@@ -52,10 +49,30 @@ public class SwapElements : MonoBehaviour
         Transform skyHighlighted = firstElement.Find("SkyHighlighted");
         skyHighlighted.gameObject.SetActive(false);
 
+        if (firstElement.Find("Blocked") == null && secondElement.Find("Blocked") == null)
+        {
+            if (firstElement.Find("HorB") != null || secondElement.Find("HorB") != null)
+            {
+                if (Math.Abs(firstElement.transform.position.x - secondElement.transform.position.x) <= 1)
+                    TrueSwap();
+            }
+            else if (firstElement.Find("VerB") != null || secondElement.Find("VerB") != null)
+            {
+                if (Math.Abs(firstElement.transform.position.y - secondElement.transform.position.y) <= 1)
+                    TrueSwap();
+            }
+            else
+                TrueSwap();
+        }
+
+        firstElement = null;
+        secondElement = null;
+    }
+
+    private void TrueSwap()
+    {
         tempPosition = firstElement.transform.position;
         firstElement.transform.position = secondElement.transform.position;
         secondElement.transform.position = tempPosition;
-
-        firstElement = null;
     }
 }

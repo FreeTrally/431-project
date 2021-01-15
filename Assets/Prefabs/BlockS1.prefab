@@ -1,12 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3157824652392979144
+--- !u!1001 &6239066841032787342
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2029914339493224985, guid: d9b8a15b43ce94040967eda342e32922,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2126972784386045898, guid: d9b8a15b43ce94040967eda342e32922,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -65,32 +70,37 @@ PrefabInstance:
     - target: {fileID: 2126972784386045899, guid: d9b8a15b43ce94040967eda342e32922,
         type: 3}
       propertyPath: m_Name
-      value: SpikeRight
+      value: SpikeCentral
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786256567992281737, guid: d9b8a15b43ce94040967eda342e32922,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9b8a15b43ce94040967eda342e32922, type: 3}
---- !u!4 &3915421036867890434 stripped
+--- !u!4 &5409131316542009924 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2126972784386045898, guid: d9b8a15b43ce94040967eda342e32922,
     type: 3}
-  m_PrefabInstance: {fileID: 3157824652392979144}
+  m_PrefabInstance: {fileID: 6239066841032787342}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &6745961382069648097
+--- !u!1001 &6652150968130902587
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 3915421036867890434}
+    m_TransformParent: {fileID: 5409131316542009924}
     m_Modifications:
     - target: {fileID: 5614556946094235329, guid: fafa21130ca80e8428621dbb53ea97bf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.18
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5614556946094235329, guid: fafa21130ca80e8428621dbb53ea97bf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.03
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 5614556946094235329, guid: fafa21130ca80e8428621dbb53ea97bf,
         type: 3}

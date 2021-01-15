@@ -23,7 +23,8 @@ public class Audio : MonoBehaviour
         }
         else
         {
-            AudioListener.volume = PlayerPrefs.GetFloat("volume");
+            //AudioListener.volume = PlayerPrefs.GetFloat("volume");
+            AudioListener.volume = 1;
             image.sprite = on;
         }
         muted = !muted;
