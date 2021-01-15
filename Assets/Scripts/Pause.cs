@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using System.Threading.Tasks;
 
 public class Pause : MonoBehaviour
 {
@@ -31,23 +32,35 @@ public class Pause : MonoBehaviour
 
     public void Win()
     {
-        ui.SetActive(false);
-        world.SetActive(false);
-        inv.SetActive(false);
-        task.SetActive(false);
-        winScreen.SetActive(true);
+        StartCoroutine(TrueWin());
     }
 
     public void Lose()
     {
-        ui.SetActive(false);
-        world.SetActive(false);
-        inv.SetActive(false);
-        loseScreen.SetActive(true);
+        StartCoroutine(TrueLose());
     }
 
     public void ExitToMenu()
     {
         SceneManager.LoadScene("(CR)Menu");
+    }
+
+    IEnumerator TrueWin()
+    {
+        ui.SetActive(false);
+        world.SetActive(false);
+        inv.SetActive(false);
+        task.SetActive(false);
+        yield return new WaitForSeconds(1);
+        winScreen.SetActive(true);
+    }
+
+    IEnumerator TrueLose()
+    {
+        ui.SetActive(false);
+        world.SetActive(false);
+        inv.SetActive(false);
+        yield return new WaitForSeconds(1);
+        loseScreen.SetActive(true);
     }
 }
