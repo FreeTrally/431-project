@@ -8,7 +8,8 @@ public class SUM : MonoBehaviour
 {
     public Text SumText;
     public Text[] Cells;
-    
+    public GameObject Camera;
+
     // Update is called once per frame
     void Update()
     {
@@ -30,6 +31,7 @@ public class SUM : MonoBehaviour
         if (SumText.text.Equals("1"))
         {
             Debug.Log(sum);
+            Camera.GetComponent<Pause>().Win();
             //SceneManager.LoadScene("(CR)Menu");
         }
     }
