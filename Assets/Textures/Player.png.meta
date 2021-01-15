@@ -76,7 +76,37 @@ TextureImporter:
     sprites: []
     outline: []
     physicsShape: []
-    bones: []
+    bones:
+    - name: bone_1
+      position: {x: 98.17094, y: 191.26212, z: 0}
+      rotation: {x: 0, y: 0, z: -0.7252166, w: 0.6885208}
+      length: 74.687485
+      parentId: -1
+    - name: bone_2
+      position: {x: 74.68749, y: -0.000002018005, z: 0}
+      rotation: {x: 0, y: 0, z: -0.63314444, w: 0.77403367}
+      length: 59.248848
+      parentId: 0
+    - name: bone_3
+      position: {x: 59.248848, y: 0.000005950732, z: 0}
+      rotation: {x: 0, y: 0, z: 0.48355827, w: 0.87531227}
+      length: 43.373936
+      parentId: 1
+    - name: bone_4
+      position: {x: -39.508526, y: 14.201485, z: 0}
+      rotation: {x: 0, y: -0, z: 0.7956892, w: 0.6057052}
+      length: 46.619152
+      parentId: 1
+    - name: bone_5
+      position: {x: 6.128736, y: 41.199036, z: 0}
+      rotation: {x: 0, y: 0, z: 0.49975383, w: 0.8661675}
+      length: 67.18415
+      parentId: 1
+    - name: bone_6
+      position: {x: 40.295837, y: 45.616924, z: 0}
+      rotation: {x: 0, y: -0, z: 0.9340066, w: 0.35725594}
+      length: 1.0830022
+      parentId: 4
     spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
