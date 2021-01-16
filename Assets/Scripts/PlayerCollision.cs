@@ -22,6 +22,7 @@ public class PlayerCollision : MonoBehaviour
         {
             var movement = this.GetComponent<PlayerMovement>();
             movement.Speed = 0;
+            movement.MoveRight = !movement.MoveRight;
             other.gameObject.SetActive(false);
             GameObject.FindGameObjectWithTag("Controller").GetComponent<EndGame>().TargetCounter++;
             PlayButton.SetActive(true);

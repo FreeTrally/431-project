@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float Speed = 5f;
     public bool MoveRight;
     public bool Jumping = false;
+    public float JumpF = 5.5f;
 
     public Transform WallCheck;
     public float WallCheckRadius;
@@ -30,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Jumping)
         {
-            transform.position += new Vector3(0f, 5.5f, 0f);
+            transform.position += new Vector3(0f, JumpF, 0f);
             Jumping = !Jumping;
         }
         else if (MoveRight)

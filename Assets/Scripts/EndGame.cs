@@ -8,8 +8,6 @@ public class EndGame : MonoBehaviour
     public GameObject[] LvlTargets;
     private int openedTargets = 0;
     private int targetsCount;
-    public GameObject Table;
-    public GameObject Inventory;
 
     void Start()
     {
