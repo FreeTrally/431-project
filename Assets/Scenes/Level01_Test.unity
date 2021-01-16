@@ -3591,8 +3591,6 @@ MonoBehaviour:
   TargetCounter: 0
   LvlTargets:
   - {fileID: 1121743651}
-  Table: {fileID: 0}
-  Inventory: {fileID: 1396423304}
 --- !u!1 &951520440
 GameObject:
   m_ObjectHideFlags: 0
@@ -4104,7 +4102,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level2
+          m_StringArgument: Level02
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1067761164

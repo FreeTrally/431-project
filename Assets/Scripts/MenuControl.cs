@@ -26,12 +26,12 @@ public class MenuControl : MonoBehaviour
 
     public void Level2Pressed()
     {
-        //SceneManager.LoadScene("Records");
+        SceneManager.LoadScene("Level02");
     }
 
     public void Level3Pressed()
     {
-        //SceneManager.LoadScene("Records");
+        SceneManager.LoadScene("Level03");
     }
 
     public void Level4Pressed()
@@ -41,12 +41,12 @@ public class MenuControl : MonoBehaviour
 
     public void Level5Pressed()
     {
-        //SceneManager.LoadScene("Records");
+        SceneManager.LoadScene("Level05");
     }
 
     public void Level6Pressed()
     {
-        //SceneManager.LoadScene("Records");
+        SceneManager.LoadScene("Level06");
     }
 
     public void Level7Pressed()

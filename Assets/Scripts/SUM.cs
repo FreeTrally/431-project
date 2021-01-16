@@ -28,7 +28,7 @@ public class SUM : MonoBehaviour
 
         SumText.text = (sum).ToString();
       
-        if (sum == 1)
+        if (sum == 1 || SumText.text.Equals("1"))
         {
             Debug.Log(sum);
             Camera.GetComponent<Pause>().Win();
