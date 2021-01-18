@@ -19,6 +19,11 @@ public class MenuControl : MonoBehaviour
         //SceneManager.LoadScene("Records");
     }
 
+    public void LoadLevel(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
+
     public void Level1Pressed()
     {
         SceneManager.LoadScene("Level01_Test");

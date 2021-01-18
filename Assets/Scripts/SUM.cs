@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
 
 public class SUM : MonoBehaviour
 {
@@ -10,10 +11,12 @@ public class SUM : MonoBehaviour
     public Text[] Cells;
     public GameObject Camera;
 
-    // Update is called once per frame
-    void Update()
+    public void Sum()
     {
         double sum = 0;
+        var currentCulture = System.Globalization.CultureInfo.InstalledUICulture;
+        var numberFormat = (System.Globalization.NumberFormatInfo)currentCulture.NumberFormat.Clone();
+        numberFormat.NumberDecimalSeparator = ".";
         foreach (var e in Cells)
         {
             if (e.text == "")
@@ -23,15 +26,21 @@ public class SUM : MonoBehaviour
             }
             else if (e.text != "" && e.text != "0")
                 e.enabled = true;
-            sum += double.Parse(e.text);
+
+            //sum += e.GetComponent<TargetScript>().GetCurrentValue();
+            var value = 0.0;
+            var mulitplier = e.GetComponentInParent<Cell>().multiplier;
+            if(double.TryParse(e.text, System.Globalization.NumberStyles.Any, numberFormat, out value))
+                sum += value * mulitplier;
         }
 
-        SumText.text = (sum).ToString();
+        // SumText.text = (sum).ToString();
+        SumText.text = Convert.ToString(sum);
       
         if (sum == 1 || SumText.text.Equals("1"))
         {
             Debug.Log(sum);
-            Camera.GetComponent<Pause>().Win();
+            Camera.GetComponent<Pause>().WinForNormies();
             //SceneManager.LoadScene("(CR)Menu");
         }
     }

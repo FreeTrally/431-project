@@ -30,7 +30,7 @@ public class PlayerCollision : MonoBehaviour
         else if (other.gameObject.CompareTag("Spikes"))
         {
             this.gameObject.SetActive(false);
-            Camera.GetComponent<Pause>().Lose();
+            Camera.GetComponent<Pause>().LoseForNormies();
         }
         else if (other.gameObject.CompareTag("Jump"))
         {

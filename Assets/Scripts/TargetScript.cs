@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEngine.EventSystems;
 using System.Globalization;
+using System;
 
 public class TargetScript : MonoBehaviour, IPointerDownHandler
 {
@@ -19,6 +20,11 @@ public class TargetScript : MonoBehaviour, IPointerDownHandler
     private void Start()
     {
         PieceText.text = targetVs[current];
+    }
+
+    public double GetCurrentValue()
+    {
+        return Convert.ToDouble(targetVs[current]);
     }
 
     public void OnPointerDown(PointerEventData data)
