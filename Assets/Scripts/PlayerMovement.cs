@@ -31,25 +31,26 @@ public class PlayerMovement : MonoBehaviour
 
         if (Jumping)
         {
-            transform.position += new Vector3(0f, JumpF, 0f);
+            rigidBody.position += new Vector2(0f, JumpF);
             Jumping = !Jumping;
+            MoveRight = !MoveRight;
         }
         else if (MoveRight)
         {
-            Vector3 movement = new Vector3(1f, 0f, 0f);
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            transform.position += movement * Time.deltaTime * Speed;
+            var movement = new Vector2(1f, 0f);
+            transform.eulerAngles = new Vector2(0, 0);
+            rigidBody.position += movement * Time.deltaTime * Speed;
         }
         else
         {
-            Vector3 movement = new Vector3(-1f, 0f, 0f);
-            transform.eulerAngles = new Vector3(0, 180, 0);
-            transform.position += movement * Time.deltaTime * Speed;
+            var movement = new Vector2(-1f, 0f);
+            transform.eulerAngles = new Vector2(0, 180);
+            rigidBody.position += movement * Time.deltaTime * Speed;
         }
     }
 
-    public void SetSpeed()
+    public void SetSpeed(float value)
     {
-        Speed = 5f;
+        Speed = value;
     }
 }

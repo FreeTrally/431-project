@@ -389,7 +389,7 @@ PrefabInstance:
     - target: {fileID: 2126972784386045899, guid: d9b8a15b43ce94040967eda342e32922,
         type: 3}
       propertyPath: m_Name
-      value: Hill
+      value: BlockHill
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9b8a15b43ce94040967eda342e32922, type: 3}

@@ -10,8 +10,8 @@ public class DDPiece : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public Text[] tablePlacesTexts;
     public Text PieceText;
     private bool startDragging;
+    public GameObject Sum;
 
-    
     void Start()
     {
 
@@ -68,6 +68,7 @@ public class DDPiece : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             {
                 tablePlacesTexts[i].text = PieceText.text;
                 transform.position = tablePlaces[i].transform.position;
+                Sum.GetComponent<SUM>().Sum();
                 return;
             }
         }

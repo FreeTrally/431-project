@@ -10,6 +10,7 @@ public class SwapElements : MonoBehaviour
     public GameObject PlayButton;   //костыль чтобы не кликались элементы до нажатия кнопки
     public Transform firstElement = null;
     public Transform secondElement = null;
+    public int delta;
     Vector3 tempPosition;
 
     void Update()
@@ -53,12 +54,12 @@ public class SwapElements : MonoBehaviour
         {
             if (firstElement.Find("HorB") != null || secondElement.Find("HorB") != null)
             {
-                if (Math.Abs(firstElement.transform.position.x - secondElement.transform.position.x) <= 1)
+                if (Math.Abs(firstElement.transform.position.x - secondElement.transform.position.x) <= delta)
                     TrueSwap();
             }
             else if (firstElement.Find("VerB") != null || secondElement.Find("VerB") != null)
             {
-                if (Math.Abs(firstElement.transform.position.y - secondElement.transform.position.y) <= 1)
+                if (Math.Abs(firstElement.transform.position.y - secondElement.transform.position.y) <= delta)
                     TrueSwap();
             }
             else

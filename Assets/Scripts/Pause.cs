@@ -11,14 +11,14 @@ public class Pause : MonoBehaviour
     public GameObject world;
     public GameObject winScreen;
     public GameObject loseScreen;
-    public GameObject inv;
+    //public GameObject inv;
     public GameObject task;
 
     public void Continute()
     {
         ui.SetActive(true);
         world.SetActive(true);
-        inv.SetActive(true);
+       // inv.SetActive(true);
         pausePanel.SetActive(false);
     }
 
@@ -26,7 +26,7 @@ public class Pause : MonoBehaviour
     {
         ui.SetActive(false);
         world.SetActive(false);
-        inv.SetActive(false);
+        //inv.SetActive(false);
         pausePanel.SetActive(true);
     }
 
@@ -44,12 +44,30 @@ public class Pause : MonoBehaviour
     {
         SceneManager.LoadScene("(CR)Menu");
     }
+    
+    public void LoseForNormies()
+    {
+        ui.SetActive(false);
+        world.SetActive(false);
+       //inv.SetActive(false);
+        //yield return new WaitForSeconds(1);
+        loseScreen.SetActive(true);
+    }
+
+    public void WinForNormies()
+    {
+        ui.SetActive(false);
+        world.SetActive(false);
+        // inv.SetActive(false);
+        task.SetActive(false);
+        winScreen.SetActive(true);
+    }
 
     IEnumerator TrueWin()
     {
         ui.SetActive(false);
         world.SetActive(false);
-        inv.SetActive(false);
+       // inv.SetActive(false);
         task.SetActive(false);
         yield return new WaitForSeconds(1);
         winScreen.SetActive(true);
@@ -59,7 +77,7 @@ public class Pause : MonoBehaviour
     {
         ui.SetActive(false);
         world.SetActive(false);
-        inv.SetActive(false);
+        //inv.SetActive(false);
         yield return new WaitForSeconds(1);
         loseScreen.SetActive(true);
     }

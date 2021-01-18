@@ -15,11 +15,11 @@ public class PlayerAnimation : MonoBehaviour
     {
         if(this.GetComponent<PlayerMovement>().Speed > 0)
         {
-            animator.SetBool("isRunning", true);
+            animator.SetBool("Running", true);
         }
         else
         {
-            animator.SetBool("isRunning", false);
+            animator.SetBool("Running", false);
         }
     }
 }
