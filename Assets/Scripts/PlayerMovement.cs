@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rigidBody.position += new Vector2(0f, JumpF);
             Jumping = !Jumping;
-            MoveRight = !MoveRight;
+            //MoveRight = !MoveRight;
         }
         else if (MoveRight)
         {

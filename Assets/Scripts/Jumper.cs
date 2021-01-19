@@ -10,12 +10,12 @@ public class Jumper : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.name.Equals("Player"))
-        if(!done)
-        {
-            GetComponent<SpriteRenderer>().sprite = sprite;
-            GetComponent<BoxCollider2D>().enabled = false;
-            done = true;
-        }
+        //if(collision.name.Equals("Player"))
+        //if(!done)
+        //{
+        //    GetComponent<SpriteRenderer>().sprite = sprite;
+        //    GetComponent<BoxCollider2D>().enabled = false;
+        //    done = true;
+        //}
     }
 }
